@@ -1,4 +1,4 @@
-# \u26CF\uFE0F URL-Miner
+# URL-Miner
 
 <div align="center">
   <img src="preview-1.png" alt="URL-Miner Interface" width="800"/>
@@ -10,13 +10,13 @@
 
 ---
 
-## \u26A1 Overview
+## Overview
 
 **URL-Miner** is a highly efficient client-side tool designed to process massive blocks of text or raw HTML to extract and manipulate hyperlinks. Built with a strict **privacy-first** approach, all processing occurs directly in your browser without any server-side data transmission. 
 
 Featuring a modern **Neo-Brutalist** tech-dark aesthetic, the tool provides a seamless, developer-friendly experience.
 
-## \u2728 Key Features
+## Key Features
 
 - **Bulk Extraction:** Automatically filters residual text and isolates valid URLs from chaotic raw data.
 - **Smart Domain Filtering:** Real-time filtering (e.g., `youtube`, `drive`) to extract only the target domain.
@@ -26,12 +26,12 @@ Featuring a modern **Neo-Brutalist** tech-dark aesthetic, the tool provides a se
 - **Export Capabilities:** Export your processed data securely to `.CSV` or `.TXT or files.
 - **Dual Themes:** Seamlessly toggle between Dark Mode and Light Mode.
 
-## \uD83D\uDEE0\uFE0F Built With
+## Tech Stack
 
 - **[React.js](https://reactjs.org/)** - UI Library
 - **[Vite](https://vitejs.dev/)** - Next Generation Frontend Tooling
 - **Lucide Icons** - Clean and modern SVG icon library
 - **Vanilla CSS3** - Custom Neo-Brutalist design system
 
-## \uD83D\uDD12 Privacy Guarantee
+## Architecture & Privacy
 This application operates **100% Client-Side**. We do not use databases, analytics, or backend APIs to process your links. Your data never leaves your machine.
