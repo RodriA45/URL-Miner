@@ -1,31 +1,37 @@
-# Extractor de Enlaces
+# ⛏ URL-Miner
 
-Una herramienta profesional, rápida y segura orientada a la extracción, limpieza y modificación masiva de enlaces en bloques de texto complejos.
-
-## Características Principales
-
-- **Extracción Inteligente:** Filtra automáticamente cualquier texto residual o identificadores, aislando únicamente las URLs válidas.
-- **Modificación en Lote:** Sistema de búsqueda y reemplazo masivo que permite editar parámetros, rutas o dominios en todos los enlaces extraídos simultáneamente.
-- **Portapapeles con un Clic:** Interfaz ágil para copiar todos los resultados consolidados de manera instantánea.
-- **Procesamiento Local (Privacidad):** Toda la lógica de extracción ocurre directamente en tu navegador (Client-Side). Ningún texto ni enlace es enviado a servidores externos.
-
-## Tecnologías Utilizadas
-
-- **React.js:** Para una interfaz de usuario reactiva y modular.
-- **Vite:** Motor de construcción ultrarrápido y servidor de desarrollo.
-- **Vanilla CSS3:** Estilos limpios y eficientes sin sobrecarga de frameworks externos.
-- **Lucide Icons:** Iconografía moderna y escalable.
-
-## Instalación y Uso (Windows)
-
-La forma más rápida de ejecutar la herramienta en entornos Windows es utilizando el script de inicio automatizado.
-
-1. Asegúrate de tener **[Node.js](https://nodejs.org/es)** instalado en tu sistema.
-2. Haz doble clic en el archivo `iniciar.bat`.
-3. El script automáticamente instalará las dependencias faltantes y abrirá tu navegador predeterminado con la aplicación lista para usarse.
-
-*(Para detener el servidor, simplemente cierra la ventana de la terminal que se abrió con el script `iniciar.bat`).*
+<div align="center">
+  <img src="preview-1.png" alt="URL-Miner Interface" width="800"/>
+  <br/><br/>
+  <img src="preview-2.png" alt="URL-Miner Interface Footer" width="800"/>
+  <br/>
+  <p><strong>A lightning-fast, privacy-first web utility for bulk extracting, filtering, and formatting URLs.</strong></p>
+</div>
 
 ---
 
-**Nota:** Este proyecto ha sido estructurado para ser fácilmente escalable; puede ser posteriormente convertido en una aplicación de escritorio nativa mediante Electron.js, o ser compilado para producción y montado en cualquier servidor web estático.
+## ⚡ Overview
+
+**URL-Miner** is a highly efficient client-side tool designed to process massive blocks of text or raw HTML to extract and manipulate hyperlinks. Built with a strict **privacy-first** approach, all processing occurs directly in your browser without any server-side data transmission. 
+
+Featuring a modern **Neo-Brutalist** tech-dark aesthetic, the tool provides a seamless, developer-friendly experience.
+
+## ✨ Key Features
+
+- **Bulk Extraction:** Automatically filters residual text and isolates valid URLs from chaotic raw data.
+- **Smart Domain Filtering:** Real-time filtering (e.g., `youtube`, `drive`) to extract only the target domain.
+- **Batch Formatting:** Inject custom prefixes and suffixes automatically.
+- **Duplicate Handling:** Automatically identifies and removes duplicate URLs.
+- **Batch Replacement:** Effortlessly find and replace string parameters across all extracted links.
+- **Export Capabilities:** Export your processed data securely to `.CSV` or `.TXT or files.
+- **Dual Themes:** Seamlessly toggle between Dark Mode and Light Mode.
+
+## ■️ Built With
+
+- **[React.js](https://reactjs.org/)** - UI Library
+- **[Vite](https://vitejs.dev/)** - Next Generation Frontend Tooling
+- **Lucide Icons** - Clean and modern SVG icon library
+- **Vanilla CSS3** - Custom Neo-Brutalist design system
+
+## �.� Privacy Guarantee
+This application operates **100% Client-Side**. We do not use databases, analytics, or backend APIs to process your links. Your data never leaves your machine.
