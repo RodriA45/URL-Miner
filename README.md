@@ -33,5 +33,5 @@ Featuring a modern **Neo-Brutalist** tech-dark aesthetic, the tool provides a se
 - **Lucide Icons** - Clean and modern SVG icon library
 - **Vanilla CSS3** - Custom Neo-Brutalist design system
 
-## ä.” Privacy Guarantee
+## ï¿½.ï¿½ Privacy Guarantee
 This application operates **100% Client-Side**. We do not use databases, analytics, or backend APIs to process your links. Your data never leaves your machine.
