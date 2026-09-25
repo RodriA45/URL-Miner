@@ -290,9 +290,12 @@ function App() {
         </section>
       </main>
 
-      <footer className="status-bar">
+      <footer className="status-bar" style={{ alignItems: 'center' }}>
         <div>(L) {stats.total} Items Loaded</div>
-        <div style={{color: 'var(--accent-cyan)', fontWeight: 'bold'}}>SYSTEM STATUS: NOMINAL</div>
+        <div>
+          Creado por <a href="https://rodria45.github.io/rodrigo-antunez-portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: 'bold', borderBottom: '2px solid var(--accent-cyan)', paddingBottom: '2px' }}>Rodrigo Antunez</a>
+        </div>
+        <div style={{ color: 'var(--accent-cyan)', fontWeight: 'bold' }}>SYSTEM STATUS: NOMINAL</div>
       </footer>
     </div>
   )
