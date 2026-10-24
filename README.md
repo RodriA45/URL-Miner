@@ -31,6 +31,10 @@ Featuring a modern **Neo-Brutalist** aesthetic, the tool provides a seamless, de
 - **Local History & Settings:** Save and restore previous extractions locally.
 - **Export Capabilities:** Export your processed data securely to `.CSV` or `.TXT`.
 - **Custom Visual Themes:** Seamlessly toggle between Cyber Dark, Neo Light, Matrix, Halloween, and Christmas.
+- **Interactive Animated Backgrounds:** 
+  - **Halloween:** Floating glowing skulls, carved jack-o'-lanterns, corner spiderwebs with dangling spiders, flying bats, and rising fire embers.
+  - **Christmas:** Santa Claus flying in his sleigh pulled by reindeer (featuring Rudolph's glowing red nose and golden stardust trail), decorated snowy Christmas trees with blinking lights & shining stars, and gentle falling snow.
+  - **Matrix:** Hypnotic falling green digital code rain.
 - **Theme Gallery:** Dedicated gallery in Settings with live palette swatches and 1-click preview.
 
 ### Tech Stack
@@ -61,6 +65,10 @@ Con una estética **Neo-Brutalista**, la aplicación ofrece máxima privacidad y
 - **Historial Local y Ajustes:** Guarda y restaura sesiones de extracción en `localStorage`.
 - **Exportación de Datos:** Descarga los resultados en `.CSV` o `.TXT`.
 - **Temas Visuales Temáticos:** Alterna fluidamente entre Cyber Dark, Neo Light, Matrix, Halloween y Navidad.
+- **Fondos Animados Interactivos en Canvas:**
+  - **Halloween:** Calaveras flotantes brillantes, calabazas talladas (jack-o'-lantern), telarañas en las esquinas con araña colgante animada, murciélagos voladores y brasas ardientes ascendentes.
+  - **Navidad:** Papá Noel volando por el cielo en su trineo rojo tirado por renos (incluyendo a Rodolfo con su nariz roja brillante y estela de polvo de estrellas dorado), árboles de navidad nevados en la base con luces parpadeantes y estrella dorada en la cima, y suave nieve cayendo.
+  - **Matrix:** Lluvia hipnótica de caracteres digitales verdes estilo ciberespacio.
 - **Galería de Temas:** Muestrario de paletas con previsualización y activación con 1 clic en la sección de Ajustes.
 
 ### Tecnologías
