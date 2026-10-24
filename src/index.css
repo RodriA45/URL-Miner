@@ -1,4 +1,4 @@
-:root {
+:root, :root[data-theme="dark"] {
   --bg-color: #000000;
   --panel-bg: #09090b;
   --panel-header-bg: rgba(255, 255, 255, 0.04);
@@ -11,6 +11,7 @@
   --border-color: #ffffff;
   --card-bg: #121215;
   --input-bg: #000000;
+  --theme-shadow: 6px 6px 0px rgba(120, 120, 120, 0.35);
 }
 
 :root[data-theme="light"] {
@@ -26,6 +27,55 @@
   --border-color: #000000;
   --card-bg: #f4f4f5;
   --input-bg: #ffffff;
+  --theme-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+}
+
+:root[data-theme="matrix"] {
+  --bg-color: #020b05;
+  --panel-bg: #041409;
+  --panel-header-bg: rgba(0, 255, 65, 0.08);
+  --accent-color: #00ff41;
+  --accent-hover: #00cc33;
+  --accent-cyan: #39ff14;
+  --accent-red: #ff2255;
+  --text-primary: #e6ffe6;
+  --text-secondary: #52b788;
+  --border-color: #00ff41;
+  --card-bg: #072210;
+  --input-bg: #020b05;
+  --theme-shadow: 6px 6px 0px rgba(0, 255, 65, 0.4);
+}
+
+:root[data-theme="halloween"] {
+  --bg-color: #0c0814;
+  --panel-bg: #150f24;
+  --panel-header-bg: rgba(255, 117, 24, 0.12);
+  --accent-color: #ff7518;
+  --accent-hover: #e05e00;
+  --accent-cyan: #c084fc;
+  --accent-red: #ff2255;
+  --text-primary: #fff5ec;
+  --text-secondary: #b9a8cf;
+  --border-color: #ff7518;
+  --card-bg: #1f1435;
+  --input-bg: #0c0814;
+  --theme-shadow: 6px 6px 0px rgba(255, 117, 24, 0.45);
+}
+
+:root[data-theme="christmas"] {
+  --bg-color: #071711;
+  --panel-bg: #0d281e;
+  --panel-header-bg: rgba(239, 35, 60, 0.12);
+  --accent-color: #ef233c;
+  --accent-hover: #d90429;
+  --accent-cyan: #ffd166;
+  --accent-red: #ff0055;
+  --text-primary: #f8f9fa;
+  --text-secondary: #99d5c9;
+  --border-color: #ffd166;
+  --card-bg: #13392b;
+  --input-bg: #071711;
+  --theme-shadow: 6px 6px 0px rgba(239, 35, 60, 0.5);
 }
 
 * {
@@ -202,14 +252,10 @@ body {
 .panel {
   background-color: var(--panel-bg);
   border: 3px solid var(--border-color);
-  box-shadow: 6px 6px 0px rgba(120, 120, 120, 0.35);
+  box-shadow: var(--theme-shadow);
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.2s;
-}
-
-:root[data-theme="light"] .panel {
-  box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+  transition: box-shadow 0.2s, background-color 0.2s, border-color 0.2s;
 }
 
 .panel-header {
@@ -512,6 +558,25 @@ td.url-col a:hover {
   flex: 1 1 200px;
 }
 
+/* Theme Picker Select (Top Bar) */
+.theme-picker-select {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  padding: 0.45rem 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.82rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--border-color);
+  outline: none;
+  transition: all 0.15s;
+}
+
+.theme-picker-select:hover, .theme-picker-select:focus {
+  border-color: var(--accent-cyan);
+}
+
 /* Theme Toggle Button */
 .theme-toggle {
   background: transparent;
@@ -531,6 +596,78 @@ td.url-col a:hover {
 .theme-toggle:hover {
   background: var(--text-primary);
   color: var(--bg-color);
+}
+
+/* Theme Gallery Grid (Settings View) */
+.theme-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.theme-card {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s, border-color 0.1s;
+  box-shadow: 3px 3px 0px var(--border-color);
+  position: relative;
+}
+
+.theme-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--border-color);
+}
+
+.theme-card.active-theme-card {
+  border-width: 3px;
+  border-color: var(--accent-color);
+  box-shadow: 4px 4px 0px var(--accent-color);
+}
+
+.theme-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.theme-card-name {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.theme-swatches {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0.25rem 0;
+}
+
+.theme-swatch {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(120, 120, 120, 0.5);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.theme-active-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  background: var(--accent-color);
+  color: #000000;
+  text-align: center;
+  border: 1px solid #000000;
+  margin-top: auto;
 }
 
 /* Status Bar */

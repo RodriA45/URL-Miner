@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Settings, Shield, Sliders, Moon, Sun, Trash2, CheckCircle2 } from 'lucide-react';
+import { Settings, Shield, Sliders, Palette, Trash2, CheckCircle2, Check } from 'lucide-react';
+import { THEMES } from '../utils/themes';
 
 export default function SettingsView({
   theme,
-  toggleTheme,
+  onSelectTheme,
   extractorSettings,
   onUpdateExtractorSettings,
   showToast
@@ -16,6 +17,11 @@ export default function SettingsView({
       [key]: !extractorSettings[key]
     });
     showToast('Configuración actualizada', 'info');
+  };
+
+  const handleChooseTheme = (themeId, themeName) => {
+    onSelectTheme(themeId);
+    showToast(`Tema activado: ${themeName}`, 'success');
   };
 
   const handleClearAllStorage = () => {
@@ -31,11 +37,74 @@ export default function SettingsView({
     <div className="panel settings-view-panel">
       <div className="panel-header" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
         <Settings size={22} color="var(--accent-color)" />
-        <h2 className="panel-title" style={{ margin: 0 }}>AJUSTES Y PREFERENCIAS DEL SISTEMA</h2>
+        <h2 className="panel-title" style={{ margin: 0 }}>AJUSTES Y TEMAS DEL SISTEMA</h2>
       </div>
 
       <div className="panel-body" style={{ flexDirection: 'column', gap: '1.75rem' }}>
-        {/* Section 1: Extraction Engine Preferences */}
+        {/* Section 1: Visual Themes Gallery */}
+        <div className="settings-card-group">
+          <div className="settings-group-header">
+            <Palette size={18} color="var(--accent-color)" />
+            <span>GALERÍA DE TEMAS VISUALES (HALLOWEEN, NAVIDAD, MATRIX Y MÁS)</span>
+          </div>
+
+          <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+            Selecciona un estilo visual para personalizar la interfaz de toda la aplicación:
+          </div>
+
+          <div className="theme-cards-grid">
+            {THEMES.map((t) => {
+              const isActive = theme === t.id;
+              return (
+                <div
+                  key={t.id}
+                  className={`theme-card ${isActive ? 'active-theme-card' : ''}`}
+                  onClick={() => handleChooseTheme(t.id, t.name)}
+                >
+                  <div className="theme-card-top">
+                    <div className="theme-card-name">
+                      <span style={{ fontSize: '1.25rem' }}>{t.icon}</span>
+                      <span>{t.name.toUpperCase()}</span>
+                    </div>
+                    {isActive && <Check size={16} color="var(--accent-color)" />}
+                  </div>
+
+                  <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', lineHeight: 1.4 }}>
+                    {t.subtitle}
+                  </div>
+
+                  <div className="theme-swatches">
+                    {t.colors.map((c, i) => (
+                      <span
+                        key={i}
+                        className="theme-swatch"
+                        style={{ backgroundColor: c }}
+                        title={`Color: ${c}`}
+                      />
+                    ))}
+                  </div>
+
+                  {isActive ? (
+                    <div className="theme-active-tag">✓ ACTIVO</div>
+                  ) : (
+                    <button
+                      className="btn-secondary"
+                      style={{ padding: '0.3rem 0.6rem', fontSize: '0.78rem', marginTop: 'auto' }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleChooseTheme(t.id, t.name);
+                      }}
+                    >
+                      ACTIVAR
+                    </button>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Section 2: Extraction Engine Preferences */}
         <div className="settings-card-group">
           <div className="settings-group-header">
             <Sliders size={18} color="var(--accent-cyan)" />
@@ -90,24 +159,6 @@ export default function SettingsView({
           </div>
         </div>
 
-        {/* Section 2: Appearance */}
-        <div className="settings-card-group">
-          <div className="settings-group-header">
-            {theme === 'dark' ? <Moon size={18} color="var(--accent-color)" /> : <Sun size={18} color="var(--accent-color)" />}
-            <span>INTERFAZ Y TEMA</span>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.5rem 0' }}>
-            <div>
-              <div className="toggle-title">Modo Visual</div>
-              <div className="toggle-desc">Alterna entre el tema Neo-Brutalist Oscuro y Claro.</div>
-            </div>
-            <button className="theme-toggle" onClick={toggleTheme} style={{ margin: 0 }}>
-              {theme === 'dark' ? <><Sun size={16} /> MODO CLARO</> : <><Moon size={16} /> MODO OSCURO</>}
-            </button>
-          </div>
-        </div>
-
         {/* Section 3: Privacy & Security */}
         <div className="settings-card-group">
           <div className="settings-group-header">
@@ -141,7 +192,7 @@ export default function SettingsView({
 
         {/* About Card */}
         <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1rem', fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'JetBrains Mono' }}>
-          URL_MINER // VERSION 3.2.0 // DEPLOYMENT READY FOR VERCEL & GITHUB PAGES
+          URL_MINER // VERSION 3.3.0 // TEMAS: CYBER DARK, NEO LIGHT, MATRIX, HALLOWEEN & NAVIDAD
         </div>
       </div>
     </div>

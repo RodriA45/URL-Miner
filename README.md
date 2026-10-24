@@ -30,7 +30,8 @@ Featuring a modern **Neo-Brutalist** aesthetic, the tool provides a seamless, de
 - **Batch Replacement:** Effortlessly find and replace string parameters across all extracted links.
 - **Local History & Settings:** Save and restore previous extractions locally.
 - **Export Capabilities:** Export your processed data securely to `.CSV` or `.TXT`.
-- **Dual Themes:** Seamlessly toggle between Dark Mode and Light Mode.
+- **Custom Visual Themes:** Seamlessly toggle between Cyber Dark, Neo Light, Matrix, Halloween, and Christmas.
+- **Theme Gallery:** Dedicated gallery in Settings with live palette swatches and 1-click preview.
 
 ### Tech Stack
 - **[React.js 19](https://reactjs.org/)** - Modern UI Library
@@ -59,7 +60,8 @@ Con una estética **Neo-Brutalista**, la aplicación ofrece máxima privacidad y
 - **Reemplazo Masivo:** Reemplaza partes de las URLs en lote.
 - **Historial Local y Ajustes:** Guarda y restaura sesiones de extracción en `localStorage`.
 - **Exportación de Datos:** Descarga los resultados en `.CSV` o `.TXT`.
-- **Doble Tema:** Alterna fluidamente entre el Modo Oscuro y el Modo Claro.
+- **Temas Visuales Temáticos:** Alterna fluidamente entre Cyber Dark, Neo Light, Matrix, Halloween y Navidad.
+- **Galería de Temas:** Muestrario de paletas con previsualización y activación con 1 clic en la sección de Ajustes.
 
 ### Tecnologías
 - **[React.js 19](https://reactjs.org/)** - Biblioteca de interfaz

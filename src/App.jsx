@@ -8,8 +8,6 @@ import {
   Download, 
   Trash2, 
   Replace, 
-  Moon, 
-  Sun, 
   ExternalLink, 
   Check, 
   Search 
@@ -20,6 +18,7 @@ import LiveDrop from './components/LiveDrop';
 import HistoryView from './components/HistoryView';
 import SettingsView from './components/SettingsView';
 import Toast from './components/Toast';
+import { THEMES } from './utils/themes';
 
 function getInitialRoomFromUrl() {
   if (typeof window === 'undefined') return '';
@@ -97,10 +96,6 @@ function App() {
       // Ignore
     }
   }, [extractorSettings]);
-
-  const toggleTheme = () => {
-    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
-  };
 
   // Main Extract Logic using improved URL Extractor engine
   const handleExtract = () => {
@@ -270,11 +265,30 @@ function App() {
           <span>THE POWERFUL LINK EXTRACTOR & LIVE TEXT BRIDGE</span>
         </div>
         <div className="header-status-area">
-          <button className="theme-toggle" onClick={toggleTheme}>
-            {theme === 'dark' ? <><Sun size={15} /> CLARO</> : <><Moon size={15} /> OSCURO</>}
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <label htmlFor="theme-selector-dropdown" style={{ fontSize: '0.8rem', fontFamily: 'JetBrains Mono', color: 'var(--text-secondary)' }}>
+              TEMA:
+            </label>
+            <select
+              id="theme-selector-dropdown"
+              className="theme-picker-select"
+              value={theme}
+              onChange={(e) => {
+                const newT = e.target.value;
+                setTheme(newT);
+                const found = THEMES.find(t => t.id === newT);
+                showToast(`Tema activado: ${found ? found.name : newT}`, 'success');
+              }}
+            >
+              {THEMES.map(t => (
+                <option key={t.id} value={t.id}>
+                  {t.icon} {t.name.toUpperCase()}
+                </option>
+              ))}
+            </select>
+          </div>
           <div style={{ fontFamily: 'JetBrains Mono', fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
-            V_3.2.0 // SYS: ONLINE
+            {(THEMES.find(t => t.id === theme) || THEMES[0]).badgeText}
           </div>
         </div>
       </header>
@@ -587,7 +601,7 @@ function App() {
           {activeTab === 'settings' && (
             <SettingsView 
               theme={theme}
-              toggleTheme={toggleTheme}
+              onSelectTheme={setTheme}
               extractorSettings={extractorSettings}
               onUpdateExtractorSettings={setExtractorSettings}
               showToast={showToast}
