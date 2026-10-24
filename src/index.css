@@ -1,6 +1,6 @@
 :root, :root[data-theme="dark"] {
   --bg-color: #000000;
-  --panel-bg: #09090b;
+  --panel-bg: rgba(9, 9, 11, 0.92);
   --panel-header-bg: rgba(255, 255, 255, 0.04);
   --accent-color: #d1ff00;
   --accent-hover: #b0d600;
@@ -9,14 +9,14 @@
   --text-primary: #ffffff;
   --text-secondary: #888888;
   --border-color: #ffffff;
-  --card-bg: #121215;
-  --input-bg: #000000;
+  --card-bg: rgba(18, 18, 21, 0.9);
+  --input-bg: rgba(0, 0, 0, 0.85);
   --theme-shadow: 6px 6px 0px rgba(120, 120, 120, 0.35);
 }
 
 :root[data-theme="light"] {
   --bg-color: #e4e4e7;
-  --panel-bg: #ffffff;
+  --panel-bg: rgba(255, 255, 255, 0.94);
   --panel-header-bg: rgba(0, 0, 0, 0.04);
   --accent-color: #d1ff00;
   --accent-hover: #b0d600;
@@ -25,14 +25,14 @@
   --text-primary: #000000;
   --text-secondary: #555555;
   --border-color: #000000;
-  --card-bg: #f4f4f5;
-  --input-bg: #ffffff;
+  --card-bg: rgba(244, 244, 245, 0.9);
+  --input-bg: rgba(255, 255, 255, 0.9);
   --theme-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
 }
 
 :root[data-theme="matrix"] {
   --bg-color: #020b05;
-  --panel-bg: #041409;
+  --panel-bg: rgba(4, 20, 9, 0.88);
   --panel-header-bg: rgba(0, 255, 65, 0.08);
   --accent-color: #00ff41;
   --accent-hover: #00cc33;
@@ -41,14 +41,14 @@
   --text-primary: #e6ffe6;
   --text-secondary: #52b788;
   --border-color: #00ff41;
-  --card-bg: #072210;
-  --input-bg: #020b05;
+  --card-bg: rgba(7, 34, 16, 0.88);
+  --input-bg: rgba(2, 11, 5, 0.85);
   --theme-shadow: 6px 6px 0px rgba(0, 255, 65, 0.4);
 }
 
 :root[data-theme="halloween"] {
   --bg-color: #0c0814;
-  --panel-bg: #150f24;
+  --panel-bg: rgba(21, 15, 36, 0.89);
   --panel-header-bg: rgba(255, 117, 24, 0.12);
   --accent-color: #ff7518;
   --accent-hover: #e05e00;
@@ -57,14 +57,14 @@
   --text-primary: #fff5ec;
   --text-secondary: #b9a8cf;
   --border-color: #ff7518;
-  --card-bg: #1f1435;
-  --input-bg: #0c0814;
+  --card-bg: rgba(31, 20, 53, 0.88);
+  --input-bg: rgba(12, 8, 20, 0.85);
   --theme-shadow: 6px 6px 0px rgba(255, 117, 24, 0.45);
 }
 
 :root[data-theme="christmas"] {
   --bg-color: #071711;
-  --panel-bg: #0d281e;
+  --panel-bg: rgba(13, 40, 30, 0.89);
   --panel-header-bg: rgba(239, 35, 60, 0.12);
   --accent-color: #ef233c;
   --accent-hover: #d90429;
@@ -73,8 +73,8 @@
   --text-primary: #f8f9fa;
   --text-secondary: #99d5c9;
   --border-color: #ffd166;
-  --card-bg: #13392b;
-  --input-bg: #071711;
+  --card-bg: rgba(19, 57, 43, 0.88);
+  --input-bg: rgba(7, 23, 17, 0.85);
   --theme-shadow: 6px 6px 0px rgba(239, 35, 60, 0.5);
 }
 
@@ -94,6 +94,45 @@ body {
   overflow-x: hidden;
 }
 
+/* Animated Theme Background Layer */
+.theme-background-wrapper {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.theme-background-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.theme-ambient-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Theme Ambient Overlays */
+.theme-bg-matrix .theme-ambient-overlay {
+  background: radial-gradient(circle at 50% 50%, transparent 55%, rgba(2, 11, 5, 0.8) 100%),
+              repeating-linear-gradient(0deg, rgba(0, 255, 65, 0.03) 0px, rgba(0, 255, 65, 0.03) 1px, transparent 1px, transparent 2px);
+}
+
+.theme-bg-halloween .theme-ambient-overlay {
+  background: radial-gradient(circle at 50% 15%, rgba(255, 117, 24, 0.16) 0%, transparent 60%),
+              radial-gradient(circle at 80% 85%, rgba(192, 132, 252, 0.14) 0%, transparent 50%);
+}
+
+.theme-bg-christmas .theme-ambient-overlay {
+  background: radial-gradient(circle at 50% 5%, rgba(239, 35, 60, 0.15) 0%, transparent 60%),
+              radial-gradient(circle at 80% 90%, rgba(255, 209, 102, 0.12) 0%, transparent 50%);
+}
+
 .app-container {
   max-width: 1440px;
   margin: 0 auto;
@@ -101,6 +140,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 640px) {
@@ -251,6 +292,8 @@ body {
 
 .panel {
   background-color: var(--panel-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 3px solid var(--border-color);
   box-shadow: var(--theme-shadow);
   display: flex;

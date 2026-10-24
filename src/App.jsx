@@ -18,6 +18,7 @@ import LiveDrop from './components/LiveDrop';
 import HistoryView from './components/HistoryView';
 import SettingsView from './components/SettingsView';
 import Toast from './components/Toast';
+import ThemeBackground from './components/ThemeBackground';
 import { THEMES } from './utils/themes';
 
 function getInitialRoomFromUrl() {
@@ -254,7 +255,9 @@ function App() {
     : extractedLinks;
 
   return (
-    <div className="app-container">
+    <>
+      <ThemeBackground theme={theme} />
+      <div className="app-container">
       {/* Toast Notification */}
       <Toast toast={toast} onClose={() => setToast(null)} />
 
@@ -619,6 +622,7 @@ function App() {
         <div style={{ color: 'var(--accent-cyan)', fontWeight: 'bold' }}>SYSTEM STATUS: NOMINAL</div>
       </footer>
     </div>
+    </>
   );
 }
 
